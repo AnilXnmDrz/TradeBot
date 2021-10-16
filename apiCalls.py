@@ -5,8 +5,8 @@ import time
 import hmac
 import hashlib
 baseUrl = 'https://testnet.binance.vision/api/v3/'
-APIKEY = 'UPpEKdXEnaVs6XnSUjrPaapEzh4F1FSXmYQzDg18e7lLmqmZ1hCLD8D3aX0fwyZR'
-SECRETKEY = 'wsw1isN40Z5JQeeDZD9oPth2nOktGRhYgrOYVMerDmQeHZkRQuT0M8I8xMazqmam'
+APIKEY = '201a0bea210ccf8468e5605711da055c1dd0ff1fbc5d7e18bedd8480a5374b7e'
+SECRETKEY = '931509e6e7ef966e1c377ffc6ba1a9dbb6078fe7bf32ccfd89efcc21c24e7aa1'
 
 
 def makeRequest(url, headers, payload):
