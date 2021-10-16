@@ -2,6 +2,8 @@
 import requests
 import json
 import time
+import hmac
+import hashlib
 baseUrl = 'https://testnet.binance.vision/api/v3/'
 APIKEY = 'UPpEKdXEnaVs6XnSUjrPaapEzh4F1FSXmYQzDg18e7lLmqmZ1hCLD8D3aX0fwyZR'
 SECRETKEY = 'wsw1isN40Z5JQeeDZD9oPth2nOktGRhYgrOYVMerDmQeHZkRQuT0M8I8xMazqmam'
@@ -34,15 +36,18 @@ def exchangeInfo():
 def checkBalance():
     payload = {}
     timestamp = str(time.time())
-    signature = '????????????????????????????????????'
-    url = baseUrl+'account?timestamp='+timestamp+'&'+'signature='+signature
-    url = baseUrl+'account'
+    # signature = '????????????????????????????????????'
+    # url = baseUrl+'account'
     headers = {
         'Content-Type': 'application/json',
         'X-MBX-APIKEY': APIKEY
     }
+    signature = hmac.new(bytes(SECRETKEY,'latin-1'), bytes(timestamp,'latin-1'), hashlib.sha256).hexdigest()
+    print('signature',signature)
+    
+    url = baseUrl+'account?timestamp='+timestamp+'&'+'signature='+signature
     res = makeRequest(url, headers, payload)
-    print(res.text)
+    print(res)
 
 
 exchangeInfo()
